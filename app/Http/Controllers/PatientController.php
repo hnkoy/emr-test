@@ -30,6 +30,8 @@ class PatientController extends Controller
 
         $counts = Patient::query()
             ->select('case', DB::raw('count(*) as total'))
+            ->whereYear('created_at', now()->year)
+            ->whereMonth('created_at', now()->month)
             ->whereIn('case', $cases)
             ->groupBy('case')
             ->pluck('total', 'case');
