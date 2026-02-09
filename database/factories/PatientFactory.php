@@ -30,7 +30,7 @@ class PatientFactory extends Factory
             'current_medications' => $this->faker->optional()->sentence(),
             'facility_name' => $this->faker->company(),
             'facility_id' => $this->faker->uuid(),
-            'case' => $this->faker->randomElement(['TESTED_MALARIA', 'TESTED_VIH', 'MALARIA_DEATHS', 'DE_OUTPATIENT_TOTAL']),
+            'case' => $this->faker->randomElement(['SUSPECTED_MALARIA', 'TESTED_MALARIA', 'CONFIRMED_MALARIA', 'MALARIA_DEATHS']),
             'notes' => $this->faker->optional()->paragraph(),
         ];
     }
