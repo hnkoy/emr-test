@@ -11,10 +11,12 @@ class PatientsCaseStats extends StatsOverviewWidget
     protected function getStats(): array
     {
         return [
+            Stat::make('Suspected Malaria', Patient::where('case', 'SUSPECTED_MALARIA')->count()),
             Stat::make('Tested Malaria', Patient::where('case', 'TESTED_MALARIA')->count()),
-            Stat::make('Tested VIH', Patient::where('case', 'TESTED_VIH')->count()),
+            Stat::make('Confirmed Malaria', Patient::where('case', 'CONFIRMED_MALARIA')->count()),
             Stat::make('Malaria Deaths', Patient::where('case', 'MALARIA_DEATHS')->count()),
-            Stat::make('Outpatient Total', Patient::where('case', 'DE_OUTPATIENT_TOTAL')->count()),
+
         ];
     }
 }
+
