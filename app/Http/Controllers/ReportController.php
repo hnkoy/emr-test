@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReportRequest;
 use App\Models\Report;
 use Illuminate\Http\Request;
 
@@ -10,15 +11,11 @@ class ReportController extends Controller
     /**
      * Store a report sent log.
      */
-    public function store(Request $request)
+    public function store(ReportRequest $request)
     {
-        // $validated = $request->validate([
-        //     'report_name' => ['required', 'string'],
-        //     'report_month' => ['required', 'integer', 'between:1,12'],
-        //     'report_year' => ['required', 'integer', 'between:2000,2100'],
-        // ]);
+      $validated = $request->validated();
 
-        $report = Report::create($request->all());
+        $report = Report::create($validated);
 
         return response()->json([
             'message' => 'Report log stored.',
